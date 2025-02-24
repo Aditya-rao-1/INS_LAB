@@ -1,27 +1,47 @@
 public class VigenereCipher {
-    public static String encrypt(String pt, String key) {
-        pt = pt.toUpperCase();
+
+    public static String encrypt(String text, String key) {
+        StringBuilder result = new StringBuilder();
+        text = text.toUpperCase();
         key = key.toUpperCase();
-        StringBuilder ciphertext = new StringBuilder();
         
-        for (int i = 0, j = 0; i < pt.length(); i++) {
-            char plainChar = pt.charAt(i);
-            if (Character.isAlphabetic(plainChar)) {  
-                int shift = key.charAt(j) - 'A';
-                char cipherChar = (char) ('A' + (plainChar - 'A' + shift) % 26);
-                ciphertext.append(cipherChar);
+        for (int i = 0, j = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+            if (Character.isLetter(c)) {
+                result.append((char) ((c + key.charAt(j) - 2 * 'A') % 26 + 'A'));
                 j = (j + 1) % key.length();
             } else {
-                ciphertext.append(plainChar); 
+                result.append(c);
             }
         }
+        return result.toString();
+    }
 
-        return ciphertext.toString();
+    public static String decrypt(String text, String key) {
+        StringBuilder result = new StringBuilder();
+        text = text.toUpperCase();
+        key = key.toUpperCase();
+        
+        for (int i = 0, j = 0; i < text.length(); i++) {
+            char c = text.charAt(i);
+            if (Character.isLetter(c)) {
+                result.append((char) ((c - key.charAt(j) + 26) % 26 + 'A'));
+                j = (j + 1) % key.length();
+            } else {
+                result.append(c);
+            }
+        }
+        return result.toString();
     }
 
     public static void main(String[] args) {
-        String pt = "HELLO WORLD";
+        String text = "HELLO WORLD";
         String key = "KEY";
-        System.out.println("Ciphertext: " + encrypt(pt, key));
+        
+        String encrypted = encrypt(text, key);
+        System.out.println("Encrypted: " + encrypted);
+        
+        String decrypted = decrypt(encrypted, key);
+        System.out.println("Decrypted: " + decrypted);
     }
 }
