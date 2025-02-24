@@ -1,47 +1,61 @@
 public class VigenereCipher {
-
-    public static String encrypt(String text, String key) {
-        StringBuilder result = new StringBuilder();
-        text = text.toUpperCase();
+    
+    public static String encrypt(String plaintext, String key) {
+        StringBuilder ciphertext = new StringBuilder();
+        
+        plaintext = plaintext.toUpperCase();
         key = key.toUpperCase();
         
-        for (int i = 0, j = 0; i < text.length(); i++) {
-            char c = text.charAt(i);
-            if (Character.isLetter(c)) {
-                result.append((char) ((c + key.charAt(j) - 2 * 'A') % 26 + 'A'));
-                j = (j + 1) % key.length();
+        int keyLength = key.length();
+        int j = 0;
+        
+        for (int i = 0; i < plaintext.length(); i++) {
+            char plainChar = plaintext.charAt(i);
+            if (Character.isAlphabetic(plainChar)) {
+                char keyChar = key.charAt(j % keyLength);
+                int encryptedValue = ((plainChar - 'A') + (keyChar - 'A')) % 26;
+                ciphertext.append((char) ('A' + encryptedValue));
+                j++;
             } else {
-                result.append(c);
+                ciphertext.append(plainChar);
             }
         }
-        return result.toString();
+        
+        return ciphertext.toString();
     }
-
-    public static String decrypt(String text, String key) {
-        StringBuilder result = new StringBuilder();
-        text = text.toUpperCase();
+    
+    public static String decrypt(String ciphertext, String key) {
+        StringBuilder plaintext = new StringBuilder();
+        
+        ciphertext = ciphertext.toUpperCase();
         key = key.toUpperCase();
         
-        for (int i = 0, j = 0; i < text.length(); i++) {
-            char c = text.charAt(i);
-            if (Character.isLetter(c)) {
-                result.append((char) ((c - key.charAt(j) + 26) % 26 + 'A'));
-                j = (j + 1) % key.length();
+        int keyLength = key.length();
+        int j = 0;
+        
+        for (int i = 0; i < ciphertext.length(); i++) {
+            char cipherChar = ciphertext.charAt(i);
+            if (Character.isAlphabetic(cipherChar)) {
+                char keyChar = key.charAt(j % keyLength);
+                int decryptedValue = ((cipherChar - 'A') - (keyChar - 'A') + 26) % 26;
+                plaintext.append((char) ('A' + decryptedValue));
+                j++;
             } else {
-                result.append(c);
+                plaintext.append(cipherChar);
             }
         }
-        return result.toString();
+        
+        return plaintext.toString();
     }
-
+    
     public static void main(String[] args) {
-        String text = "HELLO WORLD";
+        String plaintext = "HELLO WORLD";
         String key = "KEY";
         
-        String encrypted = encrypt(text, key);
-        System.out.println("Encrypted: " + encrypted);
+        String encryptedText = encrypt(plaintext, key);
+        System.out.println("Ciphertext: " + encryptedText);
         
-        String decrypted = decrypt(encrypted, key);
-        System.out.println("Decrypted: " + decrypted);
+        String decryptedText = decrypt(encryptedText, key);
+        System.out.println("Decrypted text: " + decryptedText);
     }
 }
