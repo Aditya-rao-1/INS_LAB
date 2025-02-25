@@ -23,7 +23,7 @@ Each cipher program is a standalone Java class. Follow these steps to run them:
 
 1.Clone the repository
 ```
-https://github.com/kyrax-sys/NetworkSecurity-.git
+https://github.com/Aditya-rao-1/INS_LAB
 cd your-repo-name
 ```
 2.Compile and run a specific cipher
