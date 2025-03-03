@@ -37,6 +37,14 @@ Dive into the world of cryptography with the following cipher implementations:
 
 ---
 
+### 7. DES Algorithm
+💪 The **Data Encryption Standard (DES)** is a symmetric key algorithm that applies the Feistel structure with 16 rounds of encryption.
+- Uses 64-bit blocks with a 56-bit key
+- Widely used in the past for secure data encryption
+- Demonstrates the power of symmetric encryption
+
+---
+
 ## 🔍 How It Works
 Each cipher module demonstrates:
 - 📌 Encryption Process
@@ -56,7 +64,7 @@ The code is designed for **educational purposes**, making cryptographic principl
 ## 📌 Installation
 1. Clone the repository:
 ```bash
-git clone https://github.com/username/INS_LAB.git
+https://github.com/Aditya-rao-1/INS_LAB.git
 ```
 2. Navigate to the directory:
 ```bash
