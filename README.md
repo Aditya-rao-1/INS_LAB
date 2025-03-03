@@ -71,11 +71,4 @@ cd INS_LAB
 ## 🤝 Contributing
 Pull requests are welcome! Feel free to improve the code or add more ciphers.
 
-## 📄 License
-This project is licensed under the **MIT License**.
-
----
-
-Unlock the secrets of cryptography 🔐 — one cipher at a time!
-```
 
