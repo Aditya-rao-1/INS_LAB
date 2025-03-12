@@ -35,8 +35,6 @@ Dive into the world of cryptography with the following cipher implementations:
 - Forms the basis of modern block ciphers like **DES**
 - Provides high security with multiple rounds
 
----
-
 ### 7. DES Algorithm
 💪 The **Data Encryption Standard (DES)** is a symmetric key algorithm that applies the Feistel structure with 16 rounds of encryption.
 - Uses 64-bit blocks with a 56-bit key
