@@ -43,6 +43,24 @@ Dive into the world of cryptography with the following cipher implementations:
 - Widely used in the past for secure data encryption
 - Demonstrates the power of symmetric encryption
 
+### 8. RSA Algorithm
+🔑 The **Rivest-Shamir-Adleman (RSA)** algorithm is an asymmetric encryption method relying on the difficulty of prime factorization.
+- Uses public and private keys for encryption and decryption
+- Ensures secure communication over unsecured channels
+- Widely used in modern security protocols
+
+### 9. Diffie-Hellman Key Exchange
+🔄 The **Diffie-Hellman** key exchange protocol enables secure key sharing over an insecure channel.
+- Establishes a shared secret between two parties
+- Foundation of many cryptographic protocols
+- Used in secure communications and SSL/TLS
+
+### 10. Elliptic Curve Cryptography (ECC)
+📈 **ECC** is a public-key encryption technique based on the mathematics of elliptic curves.
+- Provides high security with smaller key sizes
+- Used in modern cryptographic applications, including Bitcoin and secure messaging
+- More efficient than traditional RSA encryption
+
 ---
 
 ## 🔍 How It Works
