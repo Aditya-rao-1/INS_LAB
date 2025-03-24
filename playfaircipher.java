@@ -56,6 +56,30 @@ public class playfaircipher {
         }
         return cipher.toString();
     }
+    public static String decrypt(String text, String key) {
+        char[][] matrix = createMatrix(key);
+        text = text.toUpperCase().replace("J", "I").replaceAll(" ", "");
+        if (text.length() % 2 != 0) text += "X";
+        
+        StringBuilder pl = new StringBuilder();
+        for (int i = 0; i < text.length(); i += 2) {
+            char a = text.charAt(i), b = text.charAt(i + 1);
+            int[] posA = findPosition(matrix, a);
+            int[] posB = findPosition(matrix, b);
+            
+            if (posA[0] == posB[0]) {
+                pl.append(matrix[posA[0]][(posA[1] - 1+5) % 5]);
+                pl.append(matrix[posB[0]][(posB[1] - 1+5) % 5]);
+            } else if (posA[1] == posB[1]) {
+                pl.append(matrix[(posA[0] - 1+5) % 5][posA[1]]);
+                pl.append(matrix[(posB[0] - 1+5) % 5][posB[1]]);
+            } else {
+                pl.append(matrix[posA[0]][posB[1]]);
+                pl.append(matrix[posB[0]][posA[1]]);
+            }
+        }
+        return pl.toString().replaceAll("X$", "");
+    }
     
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
@@ -63,6 +87,8 @@ public class playfaircipher {
         String key = scanner.nextLine();
         System.out.print("Enter text: ");
         String text = scanner.nextLine();
-        System.out.println("Ciphertext: " + encrypt(text, key));
+        String enc=encrypt(text, key);
+        System.out.println("Ciphertext: " +enc );
+        System.out.println("plaintext: "+decrypt(enc, key));
     }
 }
